@@ -144,9 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Hash.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hash.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

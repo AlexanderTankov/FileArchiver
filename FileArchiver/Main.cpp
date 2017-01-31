@@ -12,12 +12,17 @@
 *
 */
 
-#include "Hash.h"
+#include "LinkedList.h"
 
 using namespace std;
 
 int main()
 {
-	Hash test('a');
-	test.setValue(3);
+	Hash htest('a');
+	htest.setValue(3);
+
+	LinkedList ltest(&htest);
+	ltest.addElem('b');
+
+	return 0;
 }

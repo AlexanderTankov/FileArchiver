@@ -12,7 +12,7 @@
 *
 */
 
-#include "LinkedList.h"
+#include "HashTable.h"
 
 using namespace std;
 
@@ -23,6 +23,9 @@ int main()
 
 	LinkedList ltest(&htest);
 	ltest.addElem('b');
+
+	HashTable tabletest;
+	tabletest.pushKey('c');
 
 	return 0;
 }

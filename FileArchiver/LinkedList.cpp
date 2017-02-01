@@ -86,11 +86,11 @@ Hash* LinkedList::findElem(char key) const
 	return findElem(key, this);
 }
 
-/*
+
 void LinkedList::printLinkedList() const
 {
 	printLinkedList(this);
-}*/
+}
 
 
 bool LinkedList::addElem(char key, LinkedList& list)
@@ -140,7 +140,7 @@ Hash* LinkedList::findElem(char key, const LinkedList* list) const
 	}
 }
 
-/*
+
 void LinkedList::printLinkedList(const LinkedList* list) const
 {
 	if (list->getData() != NULL)
@@ -151,4 +151,4 @@ void LinkedList::printLinkedList(const LinkedList* list) const
 			printLinkedList(list->getNextElem());
 		}
 	}
-}*/
+}

@@ -13,6 +13,7 @@
 */
 
 #include "HashTable.h"
+#include "Queue.h"
 
 using namespace std;
 
@@ -25,7 +26,17 @@ int main()
 	ltest.addElem('b');
 
 	HashTable tabletest;
-	tabletest.pushKey('c');
+
+	char pesho[12] = "Hello world";
+
+	for (size_t i = 0; i < 11; i++)
+	{
+		tabletest.pushKey(pesho[i]);
+	}
+
+	tabletest.printTable();
+
+	Queue qtest;
 
 	return 0;
 }

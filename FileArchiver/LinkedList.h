@@ -36,12 +36,12 @@ public:
 public:
 	bool addElem(char key);
 	Hash* findElem(char key) const;
-	//void printLinkedList() const; used only for testing
+	void printLinkedList() const;
 
 private:
 	bool addElem(char key, LinkedList& list);
 	Hash* findElem(char key, const LinkedList* list) const;
-	//void printLinkedList(const LinkedList* list) const; used only for testing
+	void printLinkedList(const LinkedList* list) const;
 
 private:
 	LinkedList* nextElem;

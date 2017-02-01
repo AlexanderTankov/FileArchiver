@@ -65,14 +65,14 @@ void HashTable::pushKey(char key)
 	this->table[indexInArray].addElem(key);
 }
 
-/*
+
 void HashTable::printTable()
 {
 	for (size_t i = 0; i < TABLE_SIZE; i++)
 	{
 		this->table[i].printLinkedList();
 	}
-}*/
+}
 
 
 void HashTable::copyFrom(const HashTable& other)

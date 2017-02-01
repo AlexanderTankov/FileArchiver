@@ -34,7 +34,7 @@ public:
 public:
 	Hash* getKeyAndValue(char key);
 	void pushKey(char key);
-	//void printTable(); used only for testing
+	void printTable();
 
 private:
 	void copyFrom(const HashTable& other);

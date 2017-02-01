@@ -1,38 +1,113 @@
-#include "Queue.h"
-#include <iostream>
+/**
+*
+* Solution to homework task
+* Data Structures Course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2016/2017
+*
+* @author Aleksandar Tankov
+* @idnumber 71492
+* @task 0
+* @compiler VC
+*
+*/
 
-Queue::Queue()
+#include "Queue.h"
+
+PriorityQueue::PriorityQueue()
 {
 	this->head = NULL;
 	size = 0;
 }
 
-Queue::~Queue()
+PriorityQueue::~PriorityQueue()
 {
+	clear();
 }
 
-Queue::Queue(const Queue& other)
+PriorityQueue::PriorityQueue(const PriorityQueue& other)
 {
-	//TODO
+	this->head = other.getHead();
+	this->size = other.getSize();
 }
 
-Queue& Queue::operator=(const Queue& other)
+PriorityQueue& PriorityQueue::operator=(const PriorityQueue& other)
 {
-	//TODO
+	if (this != &other)
+	{
+		delete this->head;
+
+		this->head = other.getHead();
+		this->size = other.getSize();
+	}
+
 	return *this;
 }
 
-
-void Queue::push(Hash* newElem)
+void PriorityQueue::push(Hash* newElem)
 {
-	//TODO: Make it priority
 	LinkedList* temp = new LinkedList(newElem);
-	temp->setNextElem(head);
-	head = temp;
-	size++;
+
+	if (this->head == NULL)
+	{
+		this->head = temp;
+		size++;
+	}
+	else if (this->head->getNextElem() == NULL)
+	{
+		if (this->head->getData()->getValue() >= newElem->getValue())
+		{
+			temp->setNextElem(this->head);
+			this->head = temp;
+		}
+		else
+		{
+			this->head->setNextElem(temp);
+		}
+
+		size++;
+	}
+	else
+	{
+		LinkedList* iter = this->head;
+
+		//Add at first position
+		if (iter->getData()->getValue() >= newElem->getValue())
+		{
+			temp->setNextElem(iter);
+			this->head = temp;
+			size++;
+			return;
+		}
+
+		// this->size - 2 because we have another case for the first element and for the last element
+		for (size_t i = 0; i < this->size - 2; i++)
+		{
+			if (iter->getNextElem()->getData()->getValue() >= newElem->getValue())
+			{
+				temp->setNextElem(iter->getNextElem());
+				iter->setNextElem(temp);
+				size++;
+				return;
+			}
+			iter = iter->getNextElem();
+		}
+
+		if (iter->getNextElem()->getData()->getValue() >= newElem->getValue())
+		{
+			temp->setNextElem(iter->getNextElem());
+			iter->setNextElem(temp);
+		}
+		else
+		{
+			iter->setNextElem(temp);
+		}
+
+		size++;
+	}
 }
 
-Hash* Queue::pop()
+Hash* PriorityQueue::pop()
 {
 	Hash* result = NULL;
 	if (size == 0)
@@ -65,7 +140,7 @@ Hash* Queue::pop()
 	}
 }
 
-Hash* Queue::peek() const
+Hash* PriorityQueue::peek() const
 {
 	Hash* result = NULL;
 	if (size == 0)
@@ -85,36 +160,33 @@ Hash* Queue::peek() const
 	}
 }
 	
-	
-//TODO: to check is it needed
-void Queue::split(Queue* dest/*out*/)
+
+LinkedList* PriorityQueue::getHead() const
 {
-	int needed = this->getSize() / 2;
-	LinkedList* destHead = dest->GetHead();
-	destHead = this->head;
-	for (LinkedList* i = this->head; i->getNextElem()->getNextElem() != NULL; i = i->getNextElem(), needed--)
-	{
-		if (needed == 0)
-		{
-			this->head = i->getNextElem();
-			i->setNextElem(NULL);
-			return;
-		}
-	}
+	return this->head;
 }
 
-bool Queue::isEmpty() const
+bool PriorityQueue::isEmpty() const
 {
 	return size == 0;
 }
 
-void Queue::clear()
-{
-	//TODO: If head != NULL delete this->head i posle recursivno
-	this->head = NULL;
-}
-
-size_t Queue::getSize() const
+size_t PriorityQueue::getSize() const
 {
 	return size;
+}
+
+void PriorityQueue::printQueue() const
+{
+	this->head->printLinkedList();
+}
+
+
+void PriorityQueue::clear()
+{
+	if (this->head != NULL)
+	{
+		delete this->head;
+		this->head = NULL;
+	}
 }

@@ -1,26 +1,42 @@
+/**
+*
+* Solution to homework task
+* Data Structures Course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2016/2017
+*
+* @author Aleksandar Tankov
+* @idnumber 71492
+* @task 0
+* @compiler VC
+*
+*/
+
 #include "LinkedList.h"
 
 #pragma once
 
-class Queue
+class PriorityQueue
 {
 public:
-	Queue();
-	~Queue();
-	Queue(const Queue& other);
-	Queue& operator=(const Queue& other);
+	PriorityQueue();
+	~PriorityQueue();
+	PriorityQueue(const PriorityQueue& other);
+	PriorityQueue& operator=(const PriorityQueue& other);
 
 public:
-	void push(Hash* data);
+	void push(Hash* newElem);
 	Hash* pop();
 	Hash* peek() const;
 
 public:
-	LinkedList* GetHead() { return head; }
-	void split(Queue* dest/*out*/);
+	LinkedList* getHead() const;
 	bool isEmpty() const;
-	void clear();
 	size_t getSize() const;
+	void printQueue() const;
+
+private:
+	void clear();
 
 private:
 	LinkedList* head;

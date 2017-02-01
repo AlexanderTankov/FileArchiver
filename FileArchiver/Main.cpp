@@ -15,6 +15,8 @@
 #include "HashTable.h"
 #include "Queue.h"
 
+#include <iostream>
+
 using namespace std;
 
 int main()
@@ -36,7 +38,15 @@ int main()
 
 	tabletest.printTable();
 
-	Queue qtest;
+	PriorityQueue qtest;
+	for (size_t i = 0; i < TABLE_SIZE; i++)
+	{
+		if (tabletest.getTable()[i].getData() != NULL)
+			qtest.push((tabletest.getTable()[i].getData()));
+	}
+
+	std::cout << "======================" << std::endl;
+	qtest.printQueue();
 
 	return 0;
 }

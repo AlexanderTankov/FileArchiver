@@ -14,13 +14,13 @@
 
 #include "Hash.h"
 
-Hash::Hash(char Key)
+Hash::Hash(string Key)
 {
 	this->key = Key;
 	this->value = 1;
 }
 
-Hash::Hash(char Key, int Value)
+Hash::Hash(string Key, int Value)
 {
 	this->key = Key;
 	this->value = Value;
@@ -52,7 +52,7 @@ void Hash::setValue(int Value)
 	this->value = Value;
 }
 
-char Hash::getKey() const
+string Hash::getKey() const
 {
 	return this->key;
 }

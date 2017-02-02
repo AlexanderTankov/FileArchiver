@@ -14,21 +14,25 @@
 
 #pragma once
 
+#include <string>
+
+using namespace std;
+
 class Hash
 {
 public:
-	Hash(char Key);
-	Hash(char Key, int Value);
+	Hash(string Key);
+	Hash(string Key, int Value);
 	~Hash();
 	Hash(const Hash& other);
 	Hash& operator=(const Hash& other);
 
 public:
 	void setValue(int Value);
-	char getKey() const;
+	string getKey() const;
 	int getValue() const;
 
 private:
-	char key;
+	string key;
 	int value;
 };

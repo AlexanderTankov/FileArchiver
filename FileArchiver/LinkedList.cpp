@@ -76,12 +76,12 @@ Hash* LinkedList::getData() const
 }
 
 
-bool LinkedList::addElem(char key)
+bool LinkedList::addElem(string key)
 {
 	return addElem(key, *this);
 }
 
-Hash* LinkedList::findElem(char key) const
+Hash* LinkedList::findElem(string key) const
 {
 	return findElem(key, this);
 }
@@ -93,7 +93,7 @@ void LinkedList::printLinkedList() const
 }
 
 
-bool LinkedList::addElem(char key, LinkedList& list)
+bool LinkedList::addElem(string key, LinkedList& list)
 {
 	if (list.getData() == NULL)
 	{
@@ -124,7 +124,7 @@ bool LinkedList::addElem(char key, LinkedList& list)
 	return false;
 }
 
-Hash* LinkedList::findElem(char key, const LinkedList* list) const
+Hash* LinkedList::findElem(string key, const LinkedList* list) const
 {
 	if (list->getData() == NULL)
 	{

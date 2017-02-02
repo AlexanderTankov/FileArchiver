@@ -34,13 +34,13 @@ public:
 	Hash* getData() const;
 
 public:
-	bool addElem(char key);
-	Hash* findElem(char key) const;
+	bool addElem(string key);
+	Hash* findElem(string key) const;
 	void printLinkedList() const;
 
 private:
-	bool addElem(char key, LinkedList& list);
-	Hash* findElem(char key, const LinkedList* list) const;
+	bool addElem(string key, LinkedList& list);
+	Hash* findElem(string key, const LinkedList* list) const;
 	void printLinkedList(const LinkedList* list) const;
 
 private:

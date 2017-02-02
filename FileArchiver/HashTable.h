@@ -32,13 +32,14 @@ public:
 	LinkedList* getTable() const;
 
 public:
-	Hash* getKeyAndValue(char key);
+	Hash* getKeyAndValue(string key);
+	void pushKey(string key);
 	void pushKey(char key);
 	void printTable();
 
 private:
 	void copyFrom(const HashTable& other);
-	Hash* findElement(char key, const LinkedList& linkedList) const;
+	Hash* findElement(string key, const LinkedList& linkedList) const;
 
 private:
 	LinkedList* table;

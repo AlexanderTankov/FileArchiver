@@ -21,15 +21,15 @@ using namespace std;
 
 int main()
 {
-	Hash htest('a');
+	Hash htest("a");
 	htest.setValue(3);
 
 	LinkedList ltest(&htest);
-	ltest.addElem('b');
+	ltest.addElem("b");
 
 	HashTable tabletest;
 
-	char pesho[12] = "Hello world";
+	string pesho = "Hello world";
 
 	for (size_t i = 0; i < 11; i++)
 	{
@@ -47,6 +47,7 @@ int main()
 
 	std::cout << "======================" << std::endl;
 	qtest.printQueue();
+
 
 	return 0;
 }

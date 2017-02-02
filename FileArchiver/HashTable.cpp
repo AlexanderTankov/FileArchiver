@@ -51,18 +51,27 @@ LinkedList* HashTable::getTable() const
 }
 
 
-Hash* HashTable::getKeyAndValue(char key)
+Hash* HashTable::getKeyAndValue(string key)
 {
-	int indexInArray = key % TABLE_SIZE;
+	int indexInArray = key.length() % TABLE_SIZE;
 
 	return findElement(key, this->table[indexInArray]);
+}
+
+void HashTable::pushKey(string key)
+{
+	int indexInArray = key.length() % TABLE_SIZE;
+
+	this->table[indexInArray].addElem(key);
 }
 
 void HashTable::pushKey(char key)
 {
 	int indexInArray = key % TABLE_SIZE;
 
-	this->table[indexInArray].addElem(key);
+	string temp;
+	temp = key;
+	this->table[indexInArray].addElem(temp);
 }
 
 
@@ -85,7 +94,7 @@ void HashTable::copyFrom(const HashTable& other)
 	}
 }
 
-Hash* HashTable::findElement(char key, const LinkedList& linkedList) const
+Hash* HashTable::findElement(string key, const LinkedList& linkedList) const
 {
 	return linkedList.findElem(key);
 }

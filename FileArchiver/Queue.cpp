@@ -90,16 +90,18 @@ void PriorityQueue::push(Hash* newElem)
 				size++;
 				return;
 			}
+
 			iter = iter->getNextElem();
 		}
 
-		if (iter->getNextElem()->getData()->getValue() >= newElem->getValue())
+		if (iter->getNextElem() != NULL && iter->getNextElem()->getData()->getValue() >= newElem->getValue())
 		{
 			temp->setNextElem(iter->getNextElem());
 			iter->setNextElem(temp);
 		}
 		else
 		{
+			iter = iter->getNextElem();
 			iter->setNextElem(temp);
 		}
 
@@ -116,26 +118,19 @@ Hash* PriorityQueue::pop()
 	}
 	else if (size == 1)
 	{
-		LinkedList* temp = this->head;
-		result = temp->getData();
+		result = this->head->getData();
+		delete this->head;
 		this->head = NULL;
-		delete temp;
 		this->size--;
 		return result;
 	}
 	else
 	{
-		for (LinkedList* i = this->head; i->getNextElem()->getNextElem() != NULL; i = i->getNextElem())
-		{
-			if (i->getNextElem() == NULL)
-			{
-				LinkedList* temp = i->getNextElem();
-				result = temp->getData();
-				i->setNextElem(NULL);
-				delete temp;
-				size--;
-			}
-		}
+		LinkedList* temp = this->head;
+		result = temp->getData();
+		this->head = this->head->getNextElem();
+		delete temp;
+		this->size--;
 		return result;
 	}
 }

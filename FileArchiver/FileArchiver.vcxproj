@@ -146,12 +146,13 @@
     <ClInclude Include="Hash.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="HuffmanTree.h" />
     <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="HuffmanTree.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Queue.cpp" />

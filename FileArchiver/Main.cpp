@@ -13,7 +13,7 @@
 */
 
 #include "HashTable.h"
-#include "Queue.h"
+#include "HuffmanTree.h"
 
 #include <iostream>
 
@@ -45,9 +45,11 @@ int main()
 			qtest.push((tabletest.getTable()[i].getData()));
 	}
 
-	std::cout << "======================" << std::endl;
-	qtest.printQueue();
+	//for debuging
+	//std::cout << "======================" << std::endl;
+	//qtest.printQueue();
 
+	HuffmanTree tree(&qtest);
 
 	return 0;
 }

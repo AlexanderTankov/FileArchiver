@@ -19,6 +19,14 @@
 
 struct Node
 {
+	Node()
+	{
+		this->value = NULL;
+		this->parent = NULL;
+		this->left = NULL;
+		this->right = NULL;
+	}
+
 	Node(Hash* hash)
 	{
 		this->value = hash;
@@ -46,9 +54,11 @@ public:
 	Node* getHead() const;
 	void createTreeFromQueue(PriorityQueue* queue);
 	HashTable* generateBinaryHash();
+	void printTree() const;
 
 private:
 	HashTable* generateBinaryHash(Node* root, HashTable& table);
+	void printTree(Node* root) const;
 
 private:
 	Node* head;

@@ -20,9 +20,9 @@ HuffmanTree::HuffmanTree()
 	this->head = NULL;
 }
 
-//TODO
 HuffmanTree::HuffmanTree(PriorityQueue* queue)
 {
+	this->head = NULL;
 	createTreeFromQueue(queue);
 }
 
@@ -70,20 +70,20 @@ void HuffmanTree::createTreeFromQueue(PriorityQueue* queue)
 		string mergedKey = first->getKey() + second->getKey();
 		int mergedValue = first->getValue() + second->getValue();
 
-		Hash merged(mergedKey, mergedValue);
+		Hash* merged = new Hash(mergedKey, mergedValue);
 
-		Node nodeFirst(first);
-		Node nodeSecond(second);
-		Node nodeMerged(&merged);
+		Node* nodeFirst = new Node(first);
+		Node* nodeSecond = new Node(second);
+		Node* nodeMerged = new Node(merged);
 
-		this->head = &nodeMerged;
-		nodeMerged.left = &nodeFirst;
-		nodeMerged.right = &nodeSecond;
+		this->head = nodeMerged;
+		nodeMerged->left = nodeFirst;
+		nodeMerged->right = nodeSecond;
 
-		nodeFirst.parent = &nodeMerged;
-		nodeSecond.parent = &nodeMerged;
+		nodeFirst->parent = nodeMerged;
+		nodeSecond->parent = nodeMerged;
 
-		queue->push(&merged);
+		queue->push(merged);
 
 		//for debuging
 		//std::cout << "====" << std::endl;
@@ -94,7 +94,6 @@ void HuffmanTree::createTreeFromQueue(PriorityQueue* queue)
 	}
 }
 
-
 HashTable* HuffmanTree::generateBinaryHash()
 {
 	HashTable table;
@@ -103,6 +102,12 @@ HashTable* HuffmanTree::generateBinaryHash()
 
 	return &table;
 }
+
+void HuffmanTree::printTree() const
+{
+	printTree(this->head);
+}
+
 
 //TODO: da dobavq da vzima i koda
 HashTable* HuffmanTree::generateBinaryHash(Node* root, HashTable& table)
@@ -118,4 +123,20 @@ HashTable* HuffmanTree::generateBinaryHash(Node* root, HashTable& table)
 	}
 
 	return &table;
+}
+
+//TODO:It doesnt work because when generating the tree i push in the queue Hash objects not Node objects and because of that
+//the pointers of the childs are lost
+void HuffmanTree::printTree(Node* root) const
+{
+	if (root->left == NULL && root->right == NULL)
+	{
+		root->value->printHash();
+		return;
+	}
+	else
+	{
+		printTree(root->left);
+		printTree(root->right);
+	}
 }

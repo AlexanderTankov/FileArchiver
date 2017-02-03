@@ -12,11 +12,8 @@
 *
 */
 
-#include <iostream>
-
 #include "LinkedList.h"
 
-using namespace std;
 
 LinkedList::LinkedList()
 {
@@ -179,7 +176,7 @@ void LinkedList::printLinkedList(const LinkedList* list) const
 {
 	if (list->getData() != NULL)
 	{
-		cout << list->getData()->getKey() << " : " << list->getData()->getValue() << endl;
+		list->getData()->printHash();
 		if (list->getNextElem() != NULL)
 		{
 			printLinkedList(list->getNextElem());

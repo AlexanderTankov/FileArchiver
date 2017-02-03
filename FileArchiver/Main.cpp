@@ -46,10 +46,12 @@ int main()
 	}
 
 	//for debuging
-	//std::cout << "======================" << std::endl;
-	//qtest.printQueue();
+	std::cout << "======================" << std::endl;
+	qtest.printQueue();
 
 	HuffmanTree tree(&qtest);
+
+	//tree.printTree();
 
 	return 0;
 }

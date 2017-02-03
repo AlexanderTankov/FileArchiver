@@ -31,6 +31,7 @@ public:
 	void setValue(int Value);
 	string getKey() const;
 	int getValue() const;
+	void printHash() const;
 
 private:
 	string key;

@@ -14,6 +14,10 @@
 
 #include "Hash.h"
 
+#include <iostream>
+
+using namespace std;
+
 Hash::Hash(string Key)
 {
 	this->key = Key;
@@ -60,4 +64,9 @@ string Hash::getKey() const
 int Hash::getValue() const
 {
 	return this->value;
+}
+
+void Hash::printHash() const
+{
+	cout << this->key << " : " << this->value << endl;
 }

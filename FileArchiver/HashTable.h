@@ -33,6 +33,7 @@ public:
 
 public:
 	Hash* getKeyAndValue(string key);
+	void pushHash(Hash* hash);
 	void pushKey(string key);
 	void pushKey(char key);
 	void printTable();

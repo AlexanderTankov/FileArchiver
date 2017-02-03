@@ -76,6 +76,11 @@ Hash* LinkedList::getData() const
 }
 
 
+bool LinkedList::addElem(Hash* hash)
+{
+	return addElem(hash, *this);
+}
+
 bool LinkedList::addElem(string key)
 {
 	return addElem(key, *this);
@@ -92,6 +97,35 @@ void LinkedList::printLinkedList() const
 	printLinkedList(this);
 }
 
+
+bool LinkedList::addElem(Hash* hash, LinkedList& list)
+{
+	if (list.getData() == NULL)
+	{
+		list.setData(hash);
+		return true;
+	}
+	else if (list.getData() != NULL && list.getNextElem() == NULL)
+	{
+		if (list.getData()->getKey() == hash->getKey())
+		{
+			list.getData()->setValue(list.getData()->getValue() + hash->getValue());
+			return true;
+		}
+		else
+		{
+			LinkedList* newL = new LinkedList(hash);
+			list.setNextElem(newL);
+			return true;
+		}
+	}
+	else
+	{
+		return addElem(hash, *list.getNextElem());
+	}
+
+	return false;
+}
 
 bool LinkedList::addElem(string key, LinkedList& list)
 {

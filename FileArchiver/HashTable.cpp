@@ -58,6 +58,12 @@ Hash* HashTable::getKeyAndValue(string key)
 	return findElement(key, this->table[indexInArray]);
 }
 
+void HashTable::pushHash(Hash* hash)
+{
+	int indexInArray = hash->getKey().length() % TABLE_SIZE;
+	this->table[indexInArray].addElem(hash);
+}
+
 void HashTable::pushKey(string key)
 {
 	int indexInArray = key.length() % TABLE_SIZE;

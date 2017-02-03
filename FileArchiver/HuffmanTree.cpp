@@ -93,3 +93,29 @@ void HuffmanTree::createTreeFromQueue(PriorityQueue* queue)
 		
 	}
 }
+
+
+HashTable* HuffmanTree::generateBinaryHash()
+{
+	HashTable table;
+
+	generateBinaryHash(this->head, table);
+
+	return &table;
+}
+
+//TODO: da dobavq da vzima i koda
+HashTable* HuffmanTree::generateBinaryHash(Node* root, HashTable& table)
+{
+	if (root->left == NULL && root->right == NULL)
+	{
+		table.pushHash(root->value);
+	}
+	else
+	{
+		generateBinaryHash(root->left, table);
+		generateBinaryHash(root->right, table);
+	}
+
+	return &table;
+}

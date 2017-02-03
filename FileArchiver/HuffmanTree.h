@@ -15,6 +15,7 @@
 #pragma once
 
 #include "Queue.h"
+#include "HashTable.h"
 
 struct Node
 {
@@ -44,7 +45,10 @@ public:
 public:
 	Node* getHead() const;
 	void createTreeFromQueue(PriorityQueue* queue);
-	//Hash* generateBinaryHash();
+	HashTable* generateBinaryHash();
+
+private:
+	HashTable* generateBinaryHash(Node* root, HashTable& table);
 
 private:
 	Node* head;
